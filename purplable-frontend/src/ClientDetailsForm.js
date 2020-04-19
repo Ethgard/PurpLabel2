@@ -2,40 +2,27 @@ import React from 'react';
 import {Form, Input, Button, InputNumber} from 'antd';
 import {PlusCircleTwoTone} from '@ant-design/icons';
 import axios from 'axios'
+import './ClientDetailsForm.css';
 
-const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 16,
-  },
-};
-
-const tailLayout = {
-  wrapperCol: {
-    offset: 8,
-    span: 16,
-  },
-};
-
-class Demo extends React.Component {
-
-  constructor() {
-    super();
+class ClientDetailsForm extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
       username: ''
     }
   };
 
-  handleClick() {
-    // axios.get('')
-    //   .then(response => console.log(response))
+  handleClick(values) {
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/purplable/db-add',
+      data: values
+    });
   }
 
   onFinish = values => {
     console.log('Success:', values);
-    this.handleClick();
+    this.handleClick(values);
   };
 
   onFinishFailed = errorInfo => {
@@ -45,7 +32,7 @@ class Demo extends React.Component {
   render() {
     return (
       <Form
-        {...layout}
+        className="container"
         name="basic"
         initialValues={{
           remember: true,
@@ -62,11 +49,11 @@ class Demo extends React.Component {
               message: 'Please input your full name!',
             },
           ]}>
-          <Input/>
+          <Input className="add-client-name"/>
         </Form.Item>
 
         <Form.Item label="ID"
-                   name="idnumber"
+                   name="idNumber"
                    hasFeedback
                    rules={[
                      {
@@ -74,10 +61,10 @@ class Demo extends React.Component {
                        message: 'Please input your ID number!',
                      },
                    ]}>
-          <InputNumber min={1} max={999999999}/>
+          <InputNumber min={0} maxLength={9} className="add-client-id"/>
         </Form.Item>
 
-        <Form.Item {...tailLayout}>
+        <Form.Item className="add-client-button">
           <Button type="link" htmlType="submit">
             <PlusCircleTwoTone style={{fontSize: '32px'}}/>
           </Button>
@@ -87,4 +74,4 @@ class Demo extends React.Component {
   };
 }
 
-export default Demo;
+export default ClientDetailsForm;

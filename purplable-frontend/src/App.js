@@ -1,13 +1,15 @@
 import React from 'react';
 import './App.css';
 import 'antd/dist/antd.css';
-import Demo from './Demo';
+import Login from './Login';
+import ClientDetailsForm from './ClientDetailsForm';
 import ClientsTable from "./ClientsTable";
 
 function App() {
   return (
     <div className="App">
-      <Demo/>
+      {/*<Login/>*/}
+      <ClientDetailsForm/>
       <ClientsTable/>
     </div>
   );

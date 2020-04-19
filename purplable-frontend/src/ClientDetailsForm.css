@@ -1,0 +1,17 @@
+.container {
+  padding: 20px;
+}
+
+.add-client-name,
+.add-client-id {
+  width: 50%;
+  font-size: 20px;
+}
+
+.add-client-id .ant-input-number-handler-wrap {
+  opacity: 0 !important;
+}
+
+.add-client-button {
+  text-align: center;
+}

@@ -81,15 +81,14 @@ class ClientsTable extends React.Component {
   };
 
   getData() {
-    axios.get('http://localhost:3000/purplable/db-save')
+    axios.get('http://www.mocky.io/v2/5e9c7d3230000062000a7e93')
       .then(response => {
-          let responseData = response.data;
-
+          // let responseData = response.data;
           // Object.keys(responseData).forEach(function (i) {
           //   responseData.key = i;
           // });
 
-          this.setState({data: responseData});
+          this.setState({data: response.data});
         }
       );
   }
@@ -128,7 +127,7 @@ class ClientsTable extends React.Component {
       },
       {
         title: 'Action',
-        dataIndex: '',
+        dataIndex: 'delete',
         key: 'x',
         width: '15%',
         render: () => <DeleteTwoTone onClick={() => {
