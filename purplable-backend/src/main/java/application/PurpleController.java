@@ -19,16 +19,11 @@ public class PurpleController {
         this.purplePersister = purplePersister;
     }
 
-//    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping(value = Routes.DB_SAVE, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void sendToDb() {
-        System.out.println("hi");
-//        purplePersister.saveInDb(freeText, id, loggedUser);
+    public void sendToDb(@RequestParam("name") String fullName,
+                         @RequestParam(value = "id") Integer id,
+                         @RequestParam(value = "loggedUser", required = false) String loggedUser) {
+        purplePersister.saveInDb(fullName, id, loggedUser);
     }
 }
-
-
-//    public void sendToDb(@RequestParam("name") String freeText,
-//                         @RequestParam(value = "id") Integer id,
-//                         @RequestParam(value = "loggedUser", required = false) String loggedUser) {
-//        purplePersister.saveInDb(freeText, id, loggedUser);
