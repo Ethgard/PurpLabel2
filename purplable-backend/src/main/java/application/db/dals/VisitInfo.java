@@ -14,7 +14,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(schema = "purplable", name = "visit_info")
-@NoArgsConstructor
 public class VisitInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

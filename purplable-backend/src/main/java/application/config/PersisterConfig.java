@@ -1,5 +1,6 @@
 package application.config;
 
+import application.UserDetailsRepository;
 import application.VisitInfoRepository;
 import application.db.persisters.PurplePersister;
 
@@ -12,8 +13,8 @@ import org.springframework.context.annotation.Configuration;
 public class PersisterConfig {
 
     @Bean
-    PurplePersister purplePersister(VisitInfoRepository repository) {
-        return new PurplePersister(repository);
+    PurplePersister purplePersister(VisitInfoRepository repository, UserDetailsRepository userDetailsRepository) {
+        return new PurplePersister(repository, userDetailsRepository);
     }
 
     @Bean

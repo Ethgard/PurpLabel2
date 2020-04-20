@@ -13,9 +13,23 @@ class ClientDetailsForm extends React.Component {
   };
 
   handleClick(values) {
+      const headers = {
+          "Accept": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "X-Requested-With": "XMLHttpRequest"
+      }
+
+      axios.post('http://localhost:8080/purplabel/db-save', values, {headers: headers})
+          .then((result) => {
+              let responseJson = result;
+              if (result) {
+                  result //TODO: get list of VisitInfo and render it in ClientsTable with a reducer
+              }
+          }
+          );
     axios({
       method: 'post',
-      url: 'http://localhost:3000/purplable/db-add',
+      url: 'http://localhost:8080/purplabel/db-save',
       data: values
     });
   }
